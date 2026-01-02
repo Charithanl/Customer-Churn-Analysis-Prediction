@@ -13,3 +13,10 @@ dataset.head()
 print(dataset.isnull().sum())
 print(dataset.describe())
 
+# Analyzing Churn Distribution
+print(dataset['Churn'].value_counts())
+sns.countplot(x='Churn', data=dataset, palette='coolwarm')
+plt.title('Churn Distribution')
+plt.xlabel('Churn (0 = No, 1 = Yes)')
+plt.ylabel('Count')
+plt.show()
