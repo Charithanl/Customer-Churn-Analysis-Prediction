@@ -27,3 +27,16 @@ dataset['TotalCharges'].fillna(dataset['TotalCharges'].median(), inplace=True)
 
 from sklearn.preprocessing import LabelEncoder
 
+labelencoder = LabelEncoder()
+categorical_cols = ['gender', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines', 'InternetService', 
+                    'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 
+                    'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'Churn']
+for col in categorical_cols:
+    dataset[col] = labelencoder.fit_transform(dataset[col])
+
+from sklearn.model_selection import train_test_split
+
+X = dataset.drop(['customerID', 'Churn'], axis=1)
+y = dataset['Churn']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
