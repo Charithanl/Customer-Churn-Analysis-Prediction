@@ -20,3 +20,10 @@ plt.title('Churn Distribution')
 plt.xlabel('Churn (0 = No, 1 = Yes)')
 plt.ylabel('Count')
 plt.show()
+
+# Data Preprocessing
+dataset['TotalCharges'] = pd.to_numeric(dataset['TotalCharges'], errors='coerce')
+dataset['TotalCharges'].fillna(dataset['TotalCharges'].median(), inplace=True)
+
+from sklearn.preprocessing import LabelEncoder
+
