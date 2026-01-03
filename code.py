@@ -34,8 +34,8 @@ categorical_cols = ['gender', 'Partner', 'Dependents', 'PhoneService', 'Multiple
 for col in categorical_cols:
     dataset[col] = labelencoder.fit_transform(dataset[col])
 
+# splitting the dataset for training and testing
 from sklearn.model_selection import train_test_split
-
 X = dataset.drop(['customerID', 'Churn'], axis=1)
 y = dataset['Churn']
 
