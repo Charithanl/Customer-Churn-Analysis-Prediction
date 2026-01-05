@@ -38,5 +38,10 @@ for col in categorical_cols:
 from sklearn.model_selection import train_test_split
 X = dataset.drop(['customerID', 'Churn'], axis=1)
 y = dataset['Churn']
-
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+# Feature scaling
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
